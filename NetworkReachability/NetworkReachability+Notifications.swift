@@ -36,7 +36,7 @@ extension NetworkReachability {
   /// notification object. The notification's user information contains the
   /// changed flag type-converted to an unsigned 32-bit integer.
   public func beginGeneratingFlagsDidChangeNotifications() {
-    callback = { [weak self] networkReachability in
+    onFlagsDidChange { [weak self] (networkReachability) -> Void in
       guard let object = self else { return }
       let flags = NSNumber(unsignedInt: object.flags.rawValue)
       let center = NSNotificationCenter.defaultCenter()
