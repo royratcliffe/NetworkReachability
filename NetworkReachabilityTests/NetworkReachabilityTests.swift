@@ -49,7 +49,7 @@ class NetworkReachabilityTests: XCTestCase {
     // when
     let flags: NetworkReachability.Flags = [.Reachable, .IsDirect]
     // then
-    XCTAssertTrue(flags.reachability == Reachability.Reachable(.WiFi))
+    XCTAssertEqual(flags.reachability, Reachability.Reachable(.WiFi))
   }
 
   func testLinkLocalNotReachable() {
