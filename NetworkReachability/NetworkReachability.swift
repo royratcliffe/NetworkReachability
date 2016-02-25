@@ -95,6 +95,10 @@ public class NetworkReachability {
 
   public var callback: ((NetworkReachability) -> Void)?
 
+  public func onFlagsDidChange(callback: (NetworkReachability) -> Void) {
+    self.callback = callback
+  }
+
   public func scheduleWithRunLoop(runLoop: NSRunLoop, forMode mode: String) {
     SCNetworkReachabilityScheduleWithRunLoop(ref, runLoop.getCFRunLoop(), mode)
   }
