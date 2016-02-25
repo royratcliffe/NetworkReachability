@@ -52,10 +52,15 @@ class NetworkReachabilityTests: XCTestCase {
     XCTAssertEqual(flags.reachability, Reachability.Reachable(.WiFi))
   }
 
+  /// Reachable on link-local addresses requires reachable and direct, not just
+  /// reachable, nor just direct.
   func testLinkLocalNotReachable() {
-    // given
     // when
+    let localReachableFlags: NetworkReachability.Flags = [.IsLocalAddress, .Reachable]
+    let localDirectFlags: NetworkReachability.Flags = [.IsLocalAddress, .IsDirect]
     // then
+    XCTAssertEqual(localReachableFlags.reachability, Reachability.NotReachable)
+    XCTAssertEqual(localDirectFlags.reachability, Reachability.NotReachable)
   }
 
   func testInternetReachability() {
