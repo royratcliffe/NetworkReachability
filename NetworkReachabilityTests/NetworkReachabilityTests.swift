@@ -64,7 +64,6 @@ class NetworkReachabilityTests: XCTestCase {
   }
 
   func testInternetReachability() {
-    // given
     // when
     let flags = internetReachability?.getFlags()
     // then
