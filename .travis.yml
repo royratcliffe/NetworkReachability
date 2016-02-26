@@ -2,7 +2,7 @@ language: objective-c
 
 # Important to specify the simulator SDK, otherwise Travis CI will attempt to
 # build for the real iPhone and fail due to code-signing issues.
-xcode_sdk: iphonesimulator9.2
+xcode_sdk: iphonesimulator
 
 xcode_project: NetworkReachability.xcodeproj
 xcode_scheme: NetworkReachability
