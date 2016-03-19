@@ -31,17 +31,26 @@ extension NetworkReachability {
 
   /// It is common to have a network reachability object to post notifications,
   /// rather than invoke a call-back capture. This method supplies a capture
-  /// that converts the call-back to a notification posted to the default
-  /// notification centre. The network reachability wrapper becomes the
-  /// notification object. The notification's user information contains the
-  /// changed flag type-converted to an unsigned 32-bit integer.
+  /// that converts the call-back to a notification.
   public func beginGeneratingFlagsDidChangeNotifications() {
     onFlagsDidChange { [weak self] (networkReachability) -> Void in
-      guard let object = self else { return }
-      let flags = NSNumber(unsignedInt: object.flags.rawValue)
-      let center = NSNotificationCenter.defaultCenter()
-      center.postNotificationName(FlagsDidChangeNotification, object: object, userInfo: [FlagsKey: flags])
+      guard let strongSelf = self else { return }
+      strongSelf.postFlagsDidChangeNotification()
     }
+  }
+
+  /// Posts a flags-did-change notification. This method exists separately in
+  /// order that applications can trigger an initial notification, if required,
+  /// and also supply a call-back that performs custom handling as well as
+  /// posting notifications.
+  ///
+  /// Posts to the default notification centre. The network reachability wrapper
+  /// becomes the notification object. The notification's user information
+  /// contains the changed flag type-converted to an unsigned 32-bit integer.
+  public func postFlagsDidChangeNotification() {
+    let userInfo = [FlagsKey: NSNumber(unsignedInt: flags.rawValue)]
+    let center = NSNotificationCenter.defaultCenter()
+    center.postNotificationName(FlagsDidChangeNotification, object: self, userInfo: userInfo)
   }
 
 }

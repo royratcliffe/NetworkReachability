@@ -36,7 +36,6 @@ public class NetworkReachability {
   /// The designated initialiser always sets up the call-back.
   public init(ref: Ref) {
     self.ref = ref
-    self.flags = []
     var context = SCNetworkReachabilityContext(version: 0,
       info: UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque()),
       retain: nil,
@@ -53,7 +52,24 @@ public class NetworkReachability {
 
   let ref: Ref
 
-  public internal(set) var flags: Flags
+  /// Latest network reachability flags. The flags update when you ask for the
+  /// flags synchronously, using `getFlags()`, or when the flags change
+  /// asynchronously when the System Configuration framework calls back with new
+  /// flags.
+  ///
+  /// Setting the flags updates the changed flags. The changed flags change just
+  /// before the new flags replace the old flags. The new changed flags indicate
+  /// which flags have changed and which flags have not changed.
+  public internal(set) var flags: Flags = [] {
+    willSet(newFlags) {
+      flagsChanged = flags.exclusiveOr(newFlags)
+    }
+  }
+
+  /// Indicates which flags changed state at the last change. Do not confuse
+  /// these flags with the current latest flags; these are the flags that
+  /// changed, *not* the changed flags.
+  public internal(set) var flagsChanged: Flags = []
 
   /// The second call-out argument to `SCNetworkReachabilitySetCallback` is a C
   /// function pointer and *not* a closure that can capture context; even though
