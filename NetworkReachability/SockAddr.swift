@@ -26,8 +26,9 @@ import SystemConfiguration
 
 /// Creates a new Core Foundation object representing network
 /// reachability. Handles the unsafe pointer machinations.
-func createWithAddress<SockAddr>(var address: SockAddr) -> SCNetworkReachability? {
-  return withUnsafePointer(&address) {
+func createWithAddress<SockAddr>(address: SockAddr) -> SCNetworkReachability? {
+  var mutableAddress = address
+  return withUnsafePointer(&mutableAddress) {
     SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
   }
 }
