@@ -41,8 +41,10 @@ extension NetworkReachability {
 
   /// Posts a flags-did-change notification. This method exists separately in
   /// order that applications can trigger an initial notification, if required,
-  /// and also supply a call-back that performs custom handling as well as
-  /// posting notifications.
+  /// and also supply a call-back that performs custom handling _as well as_
+  /// posting notifications. For example, applications may wish to post
+  /// different notifications for different types of reachability: one for local
+  /// link, another for Internet.
   ///
   /// Posts to the default notification centre. The network reachability wrapper
   /// becomes the notification object. The notification's user information
