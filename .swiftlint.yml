@@ -1,0 +1,18 @@
+# Extend the line length warning and error levels by 50%; the default 100
+# columns gives too many warnings.
+line_length:
+  warning: 150
+  error: 300
+
+disabled_rules:
+  # Disable insistence on parameter and returns documentation. "Writing a great
+  # summary is more important than leveraging keywords." See
+  # https://github.com/realm/SwiftLint/issues/284 for discussion.
+  - valid_docs
+
+variable_name:
+  excluded:
+    - INADDR_ANY
+    - IN_LINKLOCALNETNUM
+    - FlagsDidChangeNotification
+    - FlagsKey
