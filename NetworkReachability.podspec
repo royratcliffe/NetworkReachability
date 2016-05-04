@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name = 'NetworkReachability'
   spec.version = '0.1.2'
   spec.summary = 'Swift network reachability'
-  spec.description = <<-DESCRIPTION
+  spec.description = <<-DESCRIPTION.gsub(/\s+/, ' ').chomp
   NetworkReachability framework provides Swift wrappers for the network
   reachability API found in Apple's System Configuration framework.
   DESCRIPTION
