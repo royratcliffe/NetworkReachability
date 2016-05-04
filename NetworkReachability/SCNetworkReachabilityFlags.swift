@@ -40,31 +40,25 @@ extension SCNetworkReachabilityFlags {
     if contains(SCNetworkReachabilityFlags.IsLocalAddress) {
       if contains(SCNetworkReachabilityFlags.Reachable) && contains(SCNetworkReachabilityFlags.IsDirect) {
         return .Reachable(.WiFi)
-      }
-      else {
+      } else {
         return .NotReachable
       }
-    }
-    else {
+    } else {
       if contains(SCNetworkReachabilityFlags.Reachable) {
         if contains(SCNetworkReachabilityFlags.IsWWAN) {
           return .Reachable(.WWAN)
-        }
-        else {
+        } else {
           if contains(SCNetworkReachabilityFlags.ConnectionOnTraffic) || contains(SCNetworkReachabilityFlags.ConnectionOnDemand) {
             if contains(SCNetworkReachabilityFlags.InterventionRequired) {
               return contains(SCNetworkReachabilityFlags.ConnectionRequired) ? .NotReachable : .Reachable(.WiFi)
-            }
-            else {
+            } else {
               return .Reachable(.WiFi)
             }
-          }
-          else {
+          } else {
             return contains(SCNetworkReachabilityFlags.ConnectionRequired) ? .NotReachable : .Reachable(.WiFi)
           }
         }
-      }
-      else {
+      } else {
         return .NotReachable
       }
     }
