@@ -24,7 +24,7 @@
 
 extension Reachability: Equatable {}
 
-public func ==(lhs: Reachability, rhs: Reachability) -> Bool {
+public func==(lhs: Reachability, rhs: Reachability) -> Bool {
   switch (lhs, rhs) {
   case (.NotReachable, .NotReachable):
     return true
