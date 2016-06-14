@@ -62,14 +62,21 @@ public class NetworkReachability {
   /// which flags have changed and which flags have not changed.
   public internal(set) var flags: Flags = [] {
     willSet(newFlags) {
-      flagsChanged = flags.exclusiveOr(newFlags)
+      oldFlags = flags
     }
   }
+
+  /// - returns: Previous value of the flags. Old flags change automatically
+  ///   whenever the current flags take a new value. This happens whenever the
+  ///   network reachability changes.
+  public internal(set) var oldFlags: Flags = []
 
   /// Indicates which flags changed state at the last change. Do not confuse
   /// these flags with the current latest flags; these are the flags that
   /// changed, *not* the changed flags.
-  public internal(set) var flagsChanged: Flags = []
+  public var flagsChanged: Flags {
+    return oldFlags.exclusiveOr(flags)
+  }
 
   /// The second call-out argument to `SCNetworkReachabilitySetCallback` is a C
   /// function pointer and *not* a closure that can capture context; even though
