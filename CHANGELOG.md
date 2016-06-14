@@ -5,7 +5,7 @@
 - Deprecation for Swift 2.2: var parameters
 - Note in comment with regard to posting different reachability notifications
 
-[Full Changelog](https://github.com/royratcliffe/NetworkReachability/compare/0.1.1...0.1.2)
+[Full Change Log](https://github.com/royratcliffe/NetworkReachability/compare/0.1.1...0.1.2)
 
 ## [0.1.1](https://github.com/royratcliffe/NetworkReachability/tree/0.1.1) (2016-03-19)
 
@@ -19,7 +19,7 @@
 - Remove Tests from scheme
 - Travis wants an explicit project and scheme
 
-[Full Changelog](https://github.com/royratcliffe/NetworkReachability/compare/0.1.0...0.1.1)
+[Full Change Log](https://github.com/royratcliffe/NetworkReachability/compare/0.1.0...0.1.1)
 
 ## [0.1.0](https://github.com/royratcliffe/NetworkReachability/tree/0.1.0) (2016-02-25)
 
