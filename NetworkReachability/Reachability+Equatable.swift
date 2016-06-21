@@ -26,9 +26,9 @@ extension Reachability: Equatable {}
 
 public func==(lhs: Reachability, rhs: Reachability) -> Bool {
   switch (lhs, rhs) {
-  case (.NotReachable, .NotReachable):
+  case (.notReachable, .notReachable):
     return true
-  case (let .Reachable(lhs), let .Reachable(rhs)):
+  case (let .reachable(lhs), let .reachable(rhs)):
     return lhs == rhs
   default:
     return false

@@ -29,7 +29,7 @@ import SystemConfiguration
 /// class.
 public class NetworkReachability {
 
-  public typealias Ref = SCNetworkReachabilityRef
+  public typealias Ref = SCNetworkReachability
 
   public typealias Flags = SCNetworkReachabilityFlags
 
@@ -37,7 +37,7 @@ public class NetworkReachability {
   public init(ref: Ref) {
     self.ref = ref
     var context = SCNetworkReachabilityContext(version: 0,
-      info: UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque()),
+      info: UnsafeMutablePointer(OpaquePointer(bitPattern: Unmanaged.passUnretained(self))),
       retain: nil,
       release: nil,
       copyDescription: nil)
@@ -75,7 +75,7 @@ public class NetworkReachability {
   /// these flags with the current latest flags; these are the flags that
   /// changed, *not* the changed flags.
   public var flagsChanged: Flags {
-    return oldFlags.exclusiveOr(flags)
+    return oldFlags.symmetricDifference(flags)
   }
 
   /// The second call-out argument to `SCNetworkReachabilitySetCallback` is a C
@@ -84,7 +84,10 @@ public class NetworkReachability {
   /// block of code that exists as a C function with C calling
   /// conventions. Hence it cannot run like a normal closure.
   static let callback: SCNetworkReachabilityCallBack = { (ref, flags, info) -> Void in
-    let networkReachability: NetworkReachability = Unmanaged.fromOpaque(COpaquePointer(info)).takeUnretainedValue()
+    guard let info = info else {
+      return
+    }
+    let networkReachability: NetworkReachability = Unmanaged.fromOpaque(OpaquePointer(info)).takeUnretainedValue()
 
     // This is just pure paranoia. But then why not? Logically, the reference
     // given should match the reference retained by the wrapper. Compare
@@ -118,19 +121,19 @@ public class NetworkReachability {
 
   public var callback: ((NetworkReachability) -> Void)?
 
-  public func onFlagsDidChange(callback: (NetworkReachability) -> Void) {
+  public func onFlagsDidChange(_ callback: (NetworkReachability) -> Void) {
     self.callback = callback
   }
 
-  public func scheduleWithRunLoop(runLoop: NSRunLoop, forMode mode: String) {
+  public func scheduleWithRunLoop(_ runLoop: RunLoop, forMode mode: String) {
     SCNetworkReachabilityScheduleWithRunLoop(ref, runLoop.getCFRunLoop(), mode)
   }
 
-  public func unscheduleFromRunLoop(runLoop: NSRunLoop, forMode mode: String) {
+  public func unscheduleFromRunLoop(_ runLoop: RunLoop, forMode mode: String) {
     SCNetworkReachabilityUnscheduleFromRunLoop(ref, runLoop.getCFRunLoop(), mode)
   }
 
-  public var dispatchQueue: dispatch_queue_t? {
+  public var dispatchQueue: DispatchQueue? {
     get {
       return nil
     }
@@ -141,7 +144,7 @@ public class NetworkReachability {
 
   /// This is a method that sub-classes can override, if required. Though
   /// typically, overriding is not necessary or desirable.
-  func flagsDidChange(flags: SCNetworkReachabilityFlags) {
+  func flagsDidChange(_ flags: SCNetworkReachabilityFlags) {
     self.flags = flags
     callback?(self)
   }

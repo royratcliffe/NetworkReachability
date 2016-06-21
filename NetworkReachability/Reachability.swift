@@ -26,11 +26,11 @@ public enum Reachability {
 
   /// There are two kinds of reachability: either by WiFi or by Wireless WAN.
   public enum Via {
-    case WiFi
-    case WWAN
+    case wiFi
+    case wwan
   }
 
-  case NotReachable
-  case Reachable(Via)
+  case notReachable
+  case reachable(Via)
 
 }

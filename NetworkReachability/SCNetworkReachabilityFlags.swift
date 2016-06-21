@@ -37,29 +37,29 @@ extension SCNetworkReachabilityFlags {
   /// the `NetworkReachability.FlagsKey`. The key returns an `NSNumber` whose
   /// unsigned 32-bit integer value gives the flags' raw value.
   public var reachability: Reachability {
-    if contains(SCNetworkReachabilityFlags.IsLocalAddress) {
-      if contains(SCNetworkReachabilityFlags.Reachable) && contains(SCNetworkReachabilityFlags.IsDirect) {
-        return .Reachable(.WiFi)
+    if contains(SCNetworkReachabilityFlags.isLocalAddress) {
+      if contains(SCNetworkReachabilityFlags.reachable) && contains(SCNetworkReachabilityFlags.isDirect) {
+        return .reachable(.wiFi)
       } else {
-        return .NotReachable
+        return .notReachable
       }
     } else {
-      if contains(SCNetworkReachabilityFlags.Reachable) {
-        if contains(SCNetworkReachabilityFlags.IsWWAN) {
-          return .Reachable(.WWAN)
+      if contains(SCNetworkReachabilityFlags.reachable) {
+        if contains(SCNetworkReachabilityFlags.iswwan) {
+          return .reachable(.wwan)
         } else {
-          if contains(SCNetworkReachabilityFlags.ConnectionOnTraffic) || contains(SCNetworkReachabilityFlags.ConnectionOnDemand) {
-            if contains(SCNetworkReachabilityFlags.InterventionRequired) {
-              return contains(SCNetworkReachabilityFlags.ConnectionRequired) ? .NotReachable : .Reachable(.WiFi)
+          if contains(SCNetworkReachabilityFlags.connectionOnTraffic) || contains(SCNetworkReachabilityFlags.connectionOnDemand) {
+            if contains(SCNetworkReachabilityFlags.interventionRequired) {
+              return contains(SCNetworkReachabilityFlags.connectionRequired) ? .notReachable : .reachable(.wiFi)
             } else {
-              return .Reachable(.WiFi)
+              return .reachable(.wiFi)
             }
           } else {
-            return contains(SCNetworkReachabilityFlags.ConnectionRequired) ? .NotReachable : .Reachable(.WiFi)
+            return contains(SCNetworkReachabilityFlags.connectionRequired) ? .notReachable : .reachable(.wiFi)
           }
         }
       } else {
-        return .NotReachable
+        return .notReachable
       }
     }
   }

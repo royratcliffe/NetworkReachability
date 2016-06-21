@@ -34,7 +34,7 @@ class NetworkReachabilityTests: XCTestCase {
   func testNetworkReachabilityFlagsDescription() {
     XCTAssertEqual(NetworkReachability.Flags(rawValue: 0x00000000).description, "---------")
     XCTAssertEqual(NetworkReachability.Flags(rawValue: 0xffffffff).description, "WdlDiCcRt")
-    XCTAssertEqual(NetworkReachability.Flags([.Reachable]).description, "-------R-")
+    XCTAssertEqual(NetworkReachability.Flags([.reachable]).description, "-------R-")
   }
 
   func testLinkLocalReachability() {
@@ -47,20 +47,20 @@ class NetworkReachabilityTests: XCTestCase {
 
   func testLinkLocalReachable() {
     // when
-    let flags: NetworkReachability.Flags = [.Reachable, .IsDirect]
+    let flags: NetworkReachability.Flags = [.reachable, .isDirect]
     // then
-    XCTAssertEqual(flags.reachability, Reachability.Reachable(.WiFi))
+    XCTAssertEqual(flags.reachability, Reachability.reachable(.wiFi))
   }
 
   /// Reachable on link-local addresses requires reachable and direct, not just
   /// reachable, nor just direct.
   func testLinkLocalNotReachable() {
     // when
-    let localReachableFlags: NetworkReachability.Flags = [.IsLocalAddress, .Reachable]
-    let localDirectFlags: NetworkReachability.Flags = [.IsLocalAddress, .IsDirect]
+    let localReachableFlags: NetworkReachability.Flags = [.isLocalAddress, .reachable]
+    let localDirectFlags: NetworkReachability.Flags = [.isLocalAddress, .isDirect]
     // then
-    XCTAssertEqual(localReachableFlags.reachability, Reachability.NotReachable)
-    XCTAssertEqual(localDirectFlags.reachability, Reachability.NotReachable)
+    XCTAssertEqual(localReachableFlags.reachability, Reachability.notReachable)
+    XCTAssertEqual(localDirectFlags.reachability, Reachability.notReachable)
   }
 
   func testInternetReachability() {
