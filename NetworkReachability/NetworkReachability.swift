@@ -98,7 +98,7 @@ public class NetworkReachability {
       return
     }
 
-    networkReachability.flagsDidChange(flags)
+    networkReachability.didChange(flags: flags)
   }
 
   /// Acquires the current network reachability flags, answering non-nil if
@@ -125,11 +125,11 @@ public class NetworkReachability {
     self.callback = callback
   }
 
-  public func scheduleWithRunLoop(_ runLoop: RunLoop, forMode mode: String) {
+  public func schedule(in runLoop: RunLoop, forMode mode: String) {
     SCNetworkReachabilityScheduleWithRunLoop(ref, runLoop.getCFRunLoop(), mode)
   }
 
-  public func unscheduleFromRunLoop(_ runLoop: RunLoop, forMode mode: String) {
+  public func remove(from runLoop: RunLoop, forMode mode: String) {
     SCNetworkReachabilityUnscheduleFromRunLoop(ref, runLoop.getCFRunLoop(), mode)
   }
 
@@ -144,7 +144,7 @@ public class NetworkReachability {
 
   /// This is a method that sub-classes can override, if required. Though
   /// typically, overriding is not necessary or desirable.
-  func flagsDidChange(_ flags: SCNetworkReachabilityFlags) {
+  func didChange(flags: SCNetworkReachabilityFlags) {
     self.flags = flags
     callback?(self)
   }
