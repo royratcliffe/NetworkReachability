@@ -7,8 +7,9 @@ osx_image: xcode8
 xcode_sdk: iphonesimulator10.0
 
 before_install:
+  - brew unlink xctool
   - brew update
-  - brew outdated xctool || brew upgrade xctool
+  - brew install xctool
 
 xcode_project: NetworkReachability.xcodeproj
 xcode_scheme: NetworkReachability
