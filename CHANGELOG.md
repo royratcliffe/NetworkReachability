@@ -1,5 +1,16 @@
 # Change Log
 
+## [0.1.4](https://github.com/royratcliffe/NetworkReachability/tree/0.1.4) (2016-08-13)
+
+- Fix Travis configuration
+- Sources and tests in sub-folders: Sources and Tests
+- Merge branch 'feature/swift_2_3' into develop
+- Whole-module Swift optimisation
+- Using Xcode 8
+- Using Swift 2.3
+
+[Full Change Log](https://github.com/royratcliffe/NetworkReachability/compare/0.1.3...0.1.4)
+
 ## [0.1.3](https://github.com/royratcliffe/NetworkReachability/tree/0.1.3) (2016-06-14)
 
 - Store old flags, derive flags changed
