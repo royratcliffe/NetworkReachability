@@ -29,7 +29,7 @@ extension NetworkReachability {
   // MARK: - Convenience Initialisers: Socket Address
 
   public convenience init?(address: sockaddr) {
-    guard let ref = createWithAddress(address) else {
+    guard let ref = create(with: address) else {
       return nil
     }
     self.init(ref: ref)
@@ -42,7 +42,7 @@ extension NetworkReachability {
     address.sin_len = UInt8(sizeofValue(address))
     address.sin_family = sa_family_t(AF_INET)
     address.sin_addr.s_addr = CFSwapInt32HostToBig(internetAddress)
-    guard let ref = createWithAddress(address) else {
+    guard let ref = create(with: address) else {
       return nil
     }
     self.init(ref: ref)

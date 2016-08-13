@@ -42,18 +42,18 @@ extension SCNetworkReachabilityFlags: CustomStringConvertible {
       // length, with consistent character flag positions within the string,
       // regardless of the platform. The framework aims towards cross-platform
       // compatibility.
-      ("W", SCNetworkReachabilityFlags.IsWWAN),
+      ("W", SCNetworkReachabilityFlags.isWWAN),
 
-      ("d", SCNetworkReachabilityFlags.IsDirect),
-      ("l", SCNetworkReachabilityFlags.IsLocalAddress),
-      ("D", SCNetworkReachabilityFlags.ConnectionOnDemand),
-      ("i", SCNetworkReachabilityFlags.InterventionRequired),
-      ("C", SCNetworkReachabilityFlags.ConnectionOnTraffic),
-      ("c", SCNetworkReachabilityFlags.ConnectionRequired),
-      ("R", SCNetworkReachabilityFlags.Reachable),
-      ("t", SCNetworkReachabilityFlags.TransientConnection),
+      ("d", SCNetworkReachabilityFlags.isDirect),
+      ("l", SCNetworkReachabilityFlags.isLocalAddress),
+      ("D", SCNetworkReachabilityFlags.connectionOnDemand),
+      ("i", SCNetworkReachabilityFlags.interventionRequired),
+      ("C", SCNetworkReachabilityFlags.connectionOnTraffic),
+      ("c", SCNetworkReachabilityFlags.connectionRequired),
+      ("R", SCNetworkReachabilityFlags.reachable),
+      ("t", SCNetworkReachabilityFlags.transientConnection),
     ].forEach { (string, flags) in
-      description.appendContentsOf(contains(flags) ? string : "-")
+      description.append(contains(flags) ? string : "-")
     }
     return description
   }
