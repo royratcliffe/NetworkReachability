@@ -1,5 +1,14 @@
 # Change Log
 
+## [0.2.0](https://github.com/royratcliffe/NetworkReachability/tree/0.2.0) (2016-08-13)
+
+- Merge branch 'feature/swift_3_0' into develop
+- Renamed sub-folders to Sources and Tests
+- Fix Travis configuration
+- Upgrade to latest Swift 3.0 using Xcode 8, beta 5
+
+[Full Change Log](https://github.com/royratcliffe/NetworkReachability/compare/0.1.4...0.2.0)
+
 ## [0.1.4](https://github.com/royratcliffe/NetworkReachability/tree/0.1.4) (2016-08-13)
 
 - Fix Travis configuration
