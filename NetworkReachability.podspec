@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'NetworkReachability'
-  spec.version = '0.1.3'
+  spec.version = '0.1.4'
   spec.summary = 'Swift network reachability'
   spec.description = <<-DESCRIPTION.gsub(/\s+/, ' ').chomp
   NetworkReachability framework provides Swift wrappers for the network
@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.source = {
     git: 'https://github.com/royratcliffe/NetworkReachability.git',
     tag: spec.version.to_s }
-  spec.source_files = 'NetworkReachability/**/*.{swift,h}'
+  spec.source_files = 'Sources/**/*.{swift,h}'
   spec.platform = :ios, '9.0'
   spec.requires_arc = true
   spec.framework = 'SystemConfiguration'
