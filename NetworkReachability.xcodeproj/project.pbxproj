@@ -74,8 +74,8 @@
 		7843C80A1C7CB23F00AFB113 = {
 			isa = PBXGroup;
 			children = (
-				7843C8161C7CB23F00AFB113 /* NetworkReachability */,
-				7843C8221C7CB23F00AFB113 /* NetworkReachabilityTests */,
+				7843C8161C7CB23F00AFB113 /* Sources */,
+				7843C8221C7CB23F00AFB113 /* Tests */,
 				7843C8321C7CB2C200AFB113 /* Frameworks */,
 				7843C8151C7CB23F00AFB113 /* Products */,
 			);
@@ -90,7 +90,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7843C8161C7CB23F00AFB113 /* NetworkReachability */ = {
+		7843C8161C7CB23F00AFB113 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				7843C8171C7CB23F00AFB113 /* NetworkReachability.h */,
@@ -105,16 +105,16 @@
 				788B0DC01C7D93F80024BB79 /* netinet_in.swift */,
 				7843C8191C7CB23F00AFB113 /* Info.plist */,
 			);
-			path = NetworkReachability;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		7843C8221C7CB23F00AFB113 /* NetworkReachabilityTests */ = {
+		7843C8221C7CB23F00AFB113 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				7843C8231C7CB23F00AFB113 /* NetworkReachabilityTests.swift */,
 				7843C8251C7CB23F00AFB113 /* Info.plist */,
 			);
-			path = NetworkReachabilityTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		7843C8321C7CB2C200AFB113 /* Frameworks */ = {
@@ -380,7 +380,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = NetworkReachability/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.NetworkReachability;
@@ -399,7 +399,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = NetworkReachability/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.NetworkReachability;
@@ -413,7 +413,7 @@
 		7843C82C1C7CB23F00AFB113 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = NetworkReachabilityTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.NetworkReachabilityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,7 +424,7 @@
 		7843C82D1C7CB23F00AFB113 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = NetworkReachabilityTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.pioneeringsoftware.NetworkReachabilityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
