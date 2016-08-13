@@ -50,9 +50,9 @@ extension NetworkReachability {
   /// becomes the notification object. The notification's user information
   /// contains the changed flag type-converted to an unsigned 32-bit integer.
   public func postFlagsDidChangeNotification() {
-    let userInfo = [FlagsKey: NSNumber(unsignedInt: flags.rawValue)]
-    let center = NSNotificationCenter.defaultCenter()
-    center.postNotificationName(FlagsDidChangeNotification, object: self, userInfo: userInfo)
+    let userInfo = [FlagsKey: NSNumber(value: flags.rawValue)]
+    let center = NotificationCenter.default
+    center.post(name: Notification.Name(rawValue: FlagsDidChangeNotification), object: self, userInfo: userInfo)
   }
 
 }
