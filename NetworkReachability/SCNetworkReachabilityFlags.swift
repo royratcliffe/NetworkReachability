@@ -45,7 +45,7 @@ extension SCNetworkReachabilityFlags {
       }
     } else {
       if contains(SCNetworkReachabilityFlags.reachable) {
-        if contains(SCNetworkReachabilityFlags.iswwan) {
+        if contains(SCNetworkReachabilityFlags.isWWAN) {
           return .reachable(.wwan)
         } else {
           if contains(SCNetworkReachabilityFlags.connectionOnTraffic) || contains(SCNetworkReachabilityFlags.connectionOnDemand) {

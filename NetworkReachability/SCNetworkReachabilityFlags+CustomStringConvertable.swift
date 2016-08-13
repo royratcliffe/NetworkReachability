@@ -42,7 +42,7 @@ extension SCNetworkReachabilityFlags: CustomStringConvertible {
       // length, with consistent character flag positions within the string,
       // regardless of the platform. The framework aims towards cross-platform
       // compatibility.
-      ("W", SCNetworkReachabilityFlags.iswwan),
+      ("W", SCNetworkReachabilityFlags.isWWAN),
 
       ("d", SCNetworkReachabilityFlags.isDirect),
       ("l", SCNetworkReachabilityFlags.isLocalAddress),

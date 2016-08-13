@@ -37,7 +37,7 @@ public class NetworkReachability {
   public init(ref: Ref) {
     self.ref = ref
     var context = SCNetworkReachabilityContext(version: 0,
-      info: UnsafeMutablePointer(OpaquePointer(bitPattern: Unmanaged.passUnretained(self))),
+      info: UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque()),
       retain: nil,
       release: nil,
       copyDescription: nil)
@@ -87,7 +87,7 @@ public class NetworkReachability {
     guard let info = info else {
       return
     }
-    let networkReachability: NetworkReachability = Unmanaged.fromOpaque(OpaquePointer(info)).takeUnretainedValue()
+    let networkReachability: NetworkReachability = Unmanaged.fromOpaque(info).takeUnretainedValue()
 
     // This is just pure paranoia. But then why not? Logically, the reference
     // given should match the reference retained by the wrapper. Compare
