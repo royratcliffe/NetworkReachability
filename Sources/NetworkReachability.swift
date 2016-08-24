@@ -37,7 +37,7 @@ public class NetworkReachability {
   public init(ref: Ref) {
     self.ref = ref
     var context = SCNetworkReachabilityContext(version: 0,
-      info: UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque()),
+      info: UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()),
       retain: nil,
       release: nil,
       copyDescription: nil)
