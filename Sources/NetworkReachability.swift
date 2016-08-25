@@ -121,7 +121,7 @@ public class NetworkReachability {
 
   public var callback: ((NetworkReachability) -> Void)?
 
-  public func onFlagsDidChange(_ callback: (NetworkReachability) -> Void) {
+  public func onFlagsDidChange(_ callback: ((NetworkReachability) -> Void)?) {
     self.callback = callback
   }
 
