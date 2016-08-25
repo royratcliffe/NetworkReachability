@@ -126,11 +126,11 @@ public class NetworkReachability {
   }
 
   public func schedule(in runLoop: RunLoop, forMode mode: String) {
-    SCNetworkReachabilityScheduleWithRunLoop(ref, runLoop.getCFRunLoop(), mode)
+    SCNetworkReachabilityScheduleWithRunLoop(ref, runLoop.getCFRunLoop(), mode as CFString)
   }
 
   public func remove(from runLoop: RunLoop, forMode mode: String) {
-    SCNetworkReachabilityUnscheduleFromRunLoop(ref, runLoop.getCFRunLoop(), mode)
+    SCNetworkReachabilityUnscheduleFromRunLoop(ref, runLoop.getCFRunLoop(), mode as CFString)
   }
 
   public var dispatchQueue: DispatchQueue? {
