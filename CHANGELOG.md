@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.2.1](https://github.com/royratcliffe/NetworkReachability/tree/0.2.1) (2016-08-25)
+
+- Rebind socket address to sockaddr
+- Cast String to CFString
+- Cannot assign non-optional to optional
+- MemoryLayout replaces sizeofValue
+- Changes for Xcode 8, beta 6: unsafe mutable pointer renamed "raw"
+
+[Full Change Log](https://github.com/royratcliffe/NetworkReachability/compare/0.2.0...0.2.1)
+
 ## [0.2.0](https://github.com/royratcliffe/NetworkReachability/tree/0.2.0) (2016-08-13)
 
 - Merge branch 'feature/swift_3_0' into develop
