@@ -28,7 +28,7 @@ import SystemConfiguration
 /// reachability. Handles the unsafe pointer machinations.
 func create<SockAddr>(with address: SockAddr) -> SCNetworkReachability? {
   var mutableAddress = address
-  return withUnsafePointer(&mutableAddress) {
-    SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+  return withUnsafePointer(to: &mutableAddress) {
+    SCNetworkReachabilityCreateWithAddress(nil, $0.withMemoryRebound(to: sockaddr.self, capacity: 1, { $0 }))
   }
 }

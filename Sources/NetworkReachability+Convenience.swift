@@ -39,7 +39,7 @@ extension NetworkReachability {
 
   public convenience init?(internetAddress: in_addr_t) {
     var address = sockaddr_in()
-    address.sin_len = UInt8(sizeofValue(address))
+    address.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
     address.sin_family = sa_family_t(AF_INET)
     address.sin_addr.s_addr = CFSwapInt32HostToBig(internetAddress)
     guard let ref = create(with: address) else {

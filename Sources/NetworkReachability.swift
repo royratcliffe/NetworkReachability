@@ -37,7 +37,7 @@ public class NetworkReachability {
   public init(ref: Ref) {
     self.ref = ref
     var context = SCNetworkReachabilityContext(version: 0,
-      info: UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque()),
+      info: UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()),
       retain: nil,
       release: nil,
       copyDescription: nil)
@@ -121,16 +121,16 @@ public class NetworkReachability {
 
   public var callback: ((NetworkReachability) -> Void)?
 
-  public func onFlagsDidChange(_ callback: (NetworkReachability) -> Void) {
+  public func onFlagsDidChange(_ callback: ((NetworkReachability) -> Void)?) {
     self.callback = callback
   }
 
   public func schedule(in runLoop: RunLoop, forMode mode: String) {
-    SCNetworkReachabilityScheduleWithRunLoop(ref, runLoop.getCFRunLoop(), mode)
+    SCNetworkReachabilityScheduleWithRunLoop(ref, runLoop.getCFRunLoop(), mode as CFString)
   }
 
   public func remove(from runLoop: RunLoop, forMode mode: String) {
-    SCNetworkReachabilityUnscheduleFromRunLoop(ref, runLoop.getCFRunLoop(), mode)
+    SCNetworkReachabilityUnscheduleFromRunLoop(ref, runLoop.getCFRunLoop(), mode as CFString)
   }
 
   public var dispatchQueue: DispatchQueue? {
